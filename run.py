@@ -14,7 +14,7 @@ class _SentinelMeta(type):
 class Sentinel(metaclass=_SentinelMeta):
     def __new__(cls):
         msg = "is a sentinel(=singleton) and cannot be instantiated"
-        raise TypeError(f"{cls!r} {msg}")
+        raise TypeError(f"{cls.__name__!r} {msg}")
 
 
 class Missing(Sentinel):
@@ -34,3 +34,4 @@ if __name__ == "__main__":
     print("Missing is Missing ->", Missing is Missing)
     print("DELETED is Missing ->", DELETED is Missing)
     print(CANCELLED)
+    Missing()
