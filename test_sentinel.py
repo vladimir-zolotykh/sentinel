@@ -16,3 +16,10 @@ class SentinelCustomRepr(Sentinel):
 
 def test_repr():
     assert repr(PlainSentinel) == "PlainSentinel"
+
+
+def test_cannot_instantiate():
+    with pytest.raises(TypeError) as e:
+        PlainSentinel()
+    msg = "'PlainSentinel' is a sentinel(=singleton) and cannot be instantiated"
+    assert msg in str(e.value)
