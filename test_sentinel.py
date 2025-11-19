@@ -23,3 +23,7 @@ def test_cannot_instantiate():
         PlainSentinel()
     msg = "'PlainSentinel' is a sentinel(=singleton) and cannot be instantiated"
     assert msg in str(e.value)
+
+
+def test_sentinel_custom_repr():
+    assert repr(SentinelCustomRepr) == "***SentinelRepr***"
