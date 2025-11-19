@@ -34,3 +34,11 @@ def test_pickle():
     s = pickle.dumps(SentinelCustomRepr)
     unserialized = pickle.loads(s)
     assert SentinelCustomRepr is unserialized
+
+
+def test_sentinel_comes_ready_to_use():
+    assert repr(Sentinel) == "Sentinel"
+    s = pickle.dumps(Sentinel)
+    unserialized = pickle.loads(s)
+    unserialized is Sentinel
+    # assert repr(unserialized) == "Sentinel"
