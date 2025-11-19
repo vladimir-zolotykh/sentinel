@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # PYTHON_ARGCOMPLETE_OK
 import pytest
+import pickle
 
 from run import Sentinel
 
@@ -27,3 +28,9 @@ def test_cannot_instantiate():
 
 def test_sentinel_custom_repr():
     assert repr(SentinelCustomRepr) == "***SentinelRepr***"
+
+
+def test_pickle():
+    s = pickle.dumps(SentinelCustomRepr)
+    unserialized = pickle.loads(s)
+    assert SentinelCustomRepr is unserialized
