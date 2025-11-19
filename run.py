@@ -1,6 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # PYTHON_ARGCOMPLETE_OK
+"""
+>>> print(Missing)
+Missing
+>>> Missing is Missing
+True
+>>> DELETED is Missing
+False
+>>> print(CANCELLED)
+CANCELLED
+>>> Missing()
+Traceback (most recent call last):
+...
+TypeError: 'Missing' is a sentinel(=singleton) and cannot be instantiated
+"""
 
 
 class _SentinelMeta(type):
@@ -30,8 +44,6 @@ class CANCELLED(Sentinel):
 
 
 if __name__ == "__main__":
-    print(Missing)
-    print("Missing is Missing ->", Missing is Missing)
-    print("DELETED is Missing ->", DELETED is Missing)
-    print(CANCELLED)
-    Missing()
+    import doctest
+
+    doctest.testmod()
